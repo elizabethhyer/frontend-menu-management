@@ -3,55 +3,37 @@ import { useState } from "react";
 import DescriptionModal from "../DescriptionModal/DescriptionModal";
 import ConfirmationDialog from "../ConfirmationDialog/ConfirmationDialog";
 
-const MenuItem = ({ item }) => {
+const MenuItem = ({ item, onDelete }) => {
   const [showDescModal, setShowDescModal] = useState(false);
-
-  const [imageUrl, setImageUrl] = useState(item.imageUrl);
-  const [title, setTitle] = useState(item.title);
-  const [price, setPrice] = useState(item.price);
-  const [description, setDescription] = useState(item.description);
-  const [showTrashCan, setShowTrashCan] = useState(true);
   const [showConfirmationDialog, setShowConfirmationDialog] = useState(false);
 
-  // const deleteItem = () => {
-  //   setShowConfirmationDialog(true);
-  //   setImageUrl("");
-  //   setTitle("");
-  //   setPrice("");
-  //   setDescription("");
-  //   setShowTrashCan(false);
-  // };
+  const { title, imageUrl, description, price } = item;
 
-  const toggleModal = () => {
+  const toggleDescModal = () => {
     setShowDescModal(!showDescModal);
   };
 
-  console.log(showConfirmationDialog);
+  const toggleConfirmationDialog = () => {
+    setShowConfirmationDialog(!showConfirmationDialog);
+  };
 
   return (
     <styles.MenuItemsContainer>
-      {showTrashCan && (
-        <styles.TrashCan onClick={() => setShowConfirmationDialog(true)} />
-      )}
+      <styles.TrashCan onClick={toggleConfirmationDialog} />
       <styles.BackgroundImage
         className="image"
         imageUrl={imageUrl}
-        onClick={toggleModal}
+        onClick={toggleDescModal}
       />
       {showDescModal && (
         <DescriptionModal desc={description} title={item.title} />
       )}
       {showConfirmationDialog && (
-        <ConfirmationDialog
-          imageUrl={item.imageUrl}
-          title={item.title}
-          price={item.price}
-          desc={item.description}
-        />
+        <ConfirmationDialog title={item.title} onDelete={onDelete} />
       )}
       <styles.MenuText>
         <div>{title}</div>
-        <div>{price}</div>
+        <div>{parseFloat(price).toFixed(2)}</div>
       </styles.MenuText>
     </styles.MenuItemsContainer>
   );
