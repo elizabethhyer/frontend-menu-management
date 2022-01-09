@@ -1,15 +1,13 @@
-import MenuItem from "../components/MenuItem/MenuItem";
-import { menuData } from "../data/menu.data";
 import * as styles from "./MenuPage.styles";
-import { Grid } from "@mui/material";
+import MenuOverview from "../components/MenuOverview/MenuOverview";
+import AddItemModal from "../components/AddItemModal/AddItemModal";
 
 const MenuPage = () => {
   return (
-    <Grid container justifyContent="left" alignItems="center">
-      {menuData.map((item) => (
-        <MenuItem key={item.title} item={item} />
-      ))}
-    </Grid>
+    <styles.MenuPageContainer>
+      <MenuOverview />
+      <AddItemModal />
+    </styles.MenuPageContainer>
   );
 };
 

@@ -1,8 +1,13 @@
 import styled from "styled-components";
 
-export const MenuPageGrid = styled.div`
+export const MenuPageContainer = styled.div`
   display: grid;
-  justifycontent: left;
-  alignitems: center;
-  gridtemplatecolumns: repeat(2, 1fr);
+  background-image: linear-gradient(to bottom right, #fcb07d, #fce77d);
+  justify-content: center;
+  align-items: center;
+  
+  @media screen and (max-width: 800px) {
+    padding: .6rem;
+    width 89vw;
+   }
 `;
