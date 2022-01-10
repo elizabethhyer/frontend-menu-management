@@ -7,7 +7,7 @@ const MenuItem = ({ item, onDelete }) => {
   const [showDescModal, setShowDescModal] = useState(false);
   const [showConfirmationDialog, setShowConfirmationDialog] = useState(false);
 
-  const { title, imageUrl, description, price } = item;
+  const { title, imageUrl, description, price, id } = item;
 
   const toggleDescModal = () => {
     setShowDescModal(!showDescModal);
@@ -28,7 +28,7 @@ const MenuItem = ({ item, onDelete }) => {
       />
       {showDescModal && <DescriptionModal desc={description} title={title} />}
       {showConfirmationDialog && (
-        <ConfirmationDialog title={title} onDelete={onDelete} />
+        <ConfirmationDialog id={id} onDelete={onDelete} />
       )}
       <styles.MenuText>
         <div>{title}</div>

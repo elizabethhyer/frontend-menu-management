@@ -6,6 +6,7 @@ import { useState } from "react";
 const MenuPage = () => {
   const [items, setItems] = useState([
     {
+      id: 1,
       title: "cheeseburger",
       imageUrl:
         "https://saltpepperskillet.com/wp-content/uploads/flat-top-cheeseburger-horizontal-close-up.jpg",
@@ -14,6 +15,7 @@ const MenuPage = () => {
       price: 13.5,
     },
     {
+      id: 2,
       title: "fried chicken sandwhich",
       imageUrl:
         "https://assets.bonappetit.com/photos/57acc69553e63daf11a4d9e9/master/pass/iphone-real-fried-chicken-sandwich.jpg",
@@ -22,6 +24,7 @@ const MenuPage = () => {
       price: 14.5,
     },
     {
+      id: 3,
       title: "salmon burger",
       imageUrl:
         "https://kitchenconfidante.com/wp-content/uploads/2019/10/Thai-Salmon-Burgers-kitchenconfidante.com-2332-750x1124.jpg",
@@ -30,6 +33,7 @@ const MenuPage = () => {
       price: 16,
     },
     {
+      id: 4,
       title: "thanksgiving sandwhich",
       imageUrl:
         "https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Bistro-Turkey-Sandwich_EXPS_SDON17_203868_D06_28_3b.jpg",
@@ -38,6 +42,7 @@ const MenuPage = () => {
       price: 13,
     },
     {
+      id: 5,
       title: "pastrami on rye",
       imageUrl:
         "https://static.onecms.io/wp-content/uploads/sites/19/2009/06/19/grilled-pastrami-su-1906270-x.jpg",
@@ -46,6 +51,7 @@ const MenuPage = () => {
       price: 16,
     },
     {
+      id: 6,
       title: "classic italian",
       imageUrl:
         "https://pyxis.nymag.com/v1/imgs/d2f/752/16527f42a90954805a89e0623c4bdc9dff-bony-italian-hero-jimmys-famous-heros.h473.w710.jpg",
@@ -54,6 +60,7 @@ const MenuPage = () => {
       price: 12.5,
     },
     {
+      id: 7,
       title: "jerk chicken sandwhich",
       imageUrl:
         "https://mycheekykitchen.files.wordpress.com/2020/07/dsc03500.jpg?w=1400",
@@ -62,6 +69,7 @@ const MenuPage = () => {
       price: 13.5,
     },
     {
+      id: 8,
       title: "philly cheesesteak",
       imageUrl:
         "https://littlesunnykitchen.com/wp-content/uploads/2021/09/Philly-Cheesesteak-4.jpg",
@@ -70,17 +78,38 @@ const MenuPage = () => {
     },
   ]);
 
-  const handleDelete = (title) => {
-    setItems(items.filter((i) => i.title !== title));
+  const handleDelete = (id) => {
+    setItems(items.filter((i) => i.id !== id));
   };
 
   const handleAdd = (item) => {
-    setItems([...items, item]);
+    const id = Math.floor(Math.random() * 10000) + 1;
+    const newItem = { id, ...item };
+    setItems([...items, newItem]);
+  };
+
+  const handleEdit = (item) => {
+    setItems(
+      items.map((i) =>
+        i.id === item.id
+          ? {
+              id: item.id,
+              title: item.title,
+              imageUrl: item.imageUrl,
+              description: item.description,
+              price: item.price,
+            }
+          : i
+      )
+    );
+    alert(
+      `${item.title} was updated. Please click 'Done Editing' to go back to the home screen.`
+    );
   };
 
   return (
     <styles.MenuPageContainer>
-      <MenuOverview items={items} onDelete={handleDelete} />
+      <MenuOverview items={items} onDelete={handleDelete} onEdit={handleEdit} />
       <AddItemForm onAdd={handleAdd} />
     </styles.MenuPageContainer>
   );

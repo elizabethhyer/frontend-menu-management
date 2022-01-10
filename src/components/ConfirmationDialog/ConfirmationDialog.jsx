@@ -4,7 +4,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import * as styles from "./ConfirmationDialog.styles";
 
-const ConfirmationDialog = ({ onDelete, title }) => {
+const ConfirmationDialog = ({ onDelete, id }) => {
   const [showConfirmationDialog, setShowConfirmationDialog] = useState(true);
   console.log(showConfirmationDialog);
 
@@ -28,7 +28,7 @@ const ConfirmationDialog = ({ onDelete, title }) => {
             text="delete"
             onClick={() => {
               toggleDialog();
-              onDelete(title);
+              onDelete(id);
             }}
           />
         </DialogActions>
