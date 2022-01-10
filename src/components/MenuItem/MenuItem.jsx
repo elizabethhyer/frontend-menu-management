@@ -24,12 +24,11 @@ const MenuItem = ({ item, onDelete }) => {
         className="image"
         imageUrl={imageUrl}
         onClick={toggleDescModal}
+        data-testid={`${title}Image`}
       />
-      {showDescModal && (
-        <DescriptionModal desc={description} title={item.title} />
-      )}
+      {showDescModal && <DescriptionModal desc={description} title={title} />}
       {showConfirmationDialog && (
-        <ConfirmationDialog title={item.title} onDelete={onDelete} />
+        <ConfirmationDialog title={title} onDelete={onDelete} />
       )}
       <styles.MenuText>
         <div>{title}</div>

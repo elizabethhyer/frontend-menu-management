@@ -36,12 +36,39 @@ test("Add item form does not accept new item if there is not a price and title",
     "The description to end all descriptions"
   );
 
-  //Assertions
+  // Assertions
+  userEvent.click(screen.getByText("Add item"));
+  expect(alertMock).toBeCalledTimes(1);
+
+  // Inputs
+  userEvent.type(screen.getByLabelText("* Title:"), "New Title");
+  userEvent.type(screen.getByLabelText("* Price:"), "");
+
+  // Assertions
   userEvent.click(screen.getByText("Add item"));
   expect(alertMock).toBeCalledTimes(1);
 });
 
-test("Add item form adds item to the DOM if all criteria is met", () => {
+test("Add item form adds item to the DOM if only title and price fields are filled out", () => {
+  const alertMock = jest.spyOn(window, "alert");
+  render(<MenuPage />);
+
+  // Inputs
+  userEvent.type(
+    screen.getByLabelText("* Title:"),
+    "New item without photo or description"
+  );
+  userEvent.type(screen.getByLabelText("* Price:"), "11");
+
+  //Assertions
+  userEvent.click(screen.getByText("Add item"));
+  expect(alertMock).toBeCalledTimes(0);
+
+  const newItem = screen.getByText("New item without photo or description");
+  expect(newItem).toBeVisible();
+});
+
+test("Add item form adds item to the DOM if all fields are filled out", () => {
   const alertMock = jest.spyOn(window, "alert");
   render(<MenuPage />);
 
