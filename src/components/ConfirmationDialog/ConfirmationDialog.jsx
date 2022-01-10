@@ -4,7 +4,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import * as styles from "./ConfirmationDialog.styles";
 
-const ConfirmationDialog = ({onDelete, title}) => {
+const ConfirmationDialog = ({ onDelete, title }) => {
   const [showConfirmationDialog, setShowConfirmationDialog] = useState(true);
   console.log(showConfirmationDialog);
 
@@ -24,7 +24,13 @@ const ConfirmationDialog = ({onDelete, title}) => {
         </styles.ConfirmationModalText>
         <DialogActions>
           <Button text="cancel" onClick={toggleDialog} />
-          <Button text="delete" onClick={() => onDelete(title)} />
+          <Button
+            text="delete"
+            onClick={() => {
+              toggleDialog();
+              onDelete(title);
+            }}
+          />
         </DialogActions>
       </Dialog>
     </div>

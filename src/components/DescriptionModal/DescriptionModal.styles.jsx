@@ -18,6 +18,7 @@ export const DescriptionModalContainer = styled.div`
   outline: none;
   border-radius: 5px;
   background: #fff;
+  overflow-x: scroll;
 
   @media screen and (max-width: 1100px) {
     height: 50%;
