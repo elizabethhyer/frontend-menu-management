@@ -19,7 +19,17 @@ export const DescriptionModalContainer = styled.div`
   border-radius: 5px;
   background: #fff;
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 1100px) {
+    height: 50%;
+    width: 70%;
+  }
+
+  @media screen and (max-width: 400px) {
+    height: 90%;
+    width: 90%;
+  }
+
+  @media screen and (max-width: 300px) {
     height: 100%;
     width: 100%;
   }
@@ -31,6 +41,11 @@ export const DescriptionModalClose = styled(CloseIcon)`
   margin-right: 10px;
   margin-top: 10px;
   cursor: pointer;
+
+  @media screen and (max-width: 300px) {
+    left: 0px;
+    margin-left: 10px;
+  }
 `;
 
 export const TitleText = styled.div`

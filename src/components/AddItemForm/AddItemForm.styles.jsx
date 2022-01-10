@@ -51,7 +51,7 @@ export const TextArea = styled.textarea`
   }
 `;
 
-export const Text = styled.div`
+export const Text = styled.label`
   width: 100%;
   height: 5%;
   display: flex;

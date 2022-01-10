@@ -11,9 +11,29 @@ position: relative;
 padding: 2rem;
 cursor: pointer;
 
-@media screen and (max-width: 800px) {
- padding: .6rem;
- width 85vw;
+@media screen and (max-width: 1100px) {
+  padding: 1.5rem;
+  width 40vw;
+ }
+
+ @media screen and (max-width: 800px) {
+  padding: 1.5rem;
+  width 45vw;
+ }
+
+ @media screen and (max-width: 600px) {
+  padding: 1.5rem;
+  width 70vw;
+ }
+
+@media screen and (max-width: 450px) {
+  padding: .1rem;
+  width 90vw;
+ }
+
+ @media screen and (max-width: 300px) {
+  padding: .1rem;
+  width 85vw;
 }
 `;
 
@@ -37,6 +57,10 @@ export const MenuText = styled.div`
   font-size: 0.9rem;
   font-family: "Lato", sans-serif;
   text-transform: uppercase;
+
+  @media screen and (max-width: 700px) {
+    padding-bottom: 1rem;
+  }
 `;
 
 export const TrashCan = styled(DeleteIcon)`
@@ -45,4 +69,24 @@ export const TrashCan = styled(DeleteIcon)`
   margin-top: 1rem;
   z-index: 1000;
   filter: drop-shadow(0 0 0.3rem #fff);
+
+  @media screen and (max-width: 1100px) {
+    margin-left: 22rem;
+  }
+
+  @media screen and (max-width: 800px) {
+    margin-left: 18rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    margin-left: 20rem;
+  }
+
+  @media screen and (max-width: 350px) {
+    margin-left: 15rem;
+  }
+
+  @media screen and (max-width: 300px) {
+    margin-left: 12rem;
+  }
 `;

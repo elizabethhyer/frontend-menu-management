@@ -12,8 +12,8 @@ const MenuOverview = ({ items, onDelete }) => {
         </styles.MenuTitle>
       ))}
       <Grid container justifyContent="space-around" alignItems="center">
-        {items.map((item) => (
-          <MenuItem key={item.title} item={item} onDelete={onDelete} />
+        {items.map((item, index) => (
+          <MenuItem key={index} item={item} onDelete={onDelete} />
         ))}
       </Grid>
     </div>

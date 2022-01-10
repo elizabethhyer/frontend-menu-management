@@ -19,8 +19,13 @@ export const ConfirmationModalContainer = styled(Dialog)`
   background: #fce77d;
 
   @media screen and (max-width: 800px) {
-    height: 100%;
-    width: 100%;
+    height: 25%;
+    width: 25%;
+  }
+
+  @media screen and (max-width: 300px) {
+    height: 30%;
+    width: 20%;
   }
 `;
 

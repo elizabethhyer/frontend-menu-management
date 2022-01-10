@@ -36,32 +36,36 @@ const AddItemForm = ({ onAdd }) => {
     <styles.AddItemFormContainer>
       <styles.TitleText>Add a new item</styles.TitleText>
       <form onSubmit={onSubmit}>
-        <styles.Text>Image:</styles.Text>
+        <styles.Text htmlFor="imageInput">Image:</styles.Text>
         <styles.TextInput
+          id="imageInput"
           type="text"
           placeholder="Image URL"
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
         />
-        <styles.Text>* Title:</styles.Text>
+        <styles.Text htmlFor="titleInput">* Title:</styles.Text>
 
         <styles.TextInput
+          id="titleInput"
           type="text"
           placeholder="Item name"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <styles.Text>* Price:</styles.Text>
+        <styles.Text htmlFor="priceInput">* Price:</styles.Text>
 
         <styles.TextInput
+          id="priceInput"
           type="text"
           placeholder="Price"
           value={price}
           onChange={(e) => setPrice(Number(e.target.value))}
         />
-        <styles.Text>Description:</styles.Text>
+        <styles.Text htmlFor="descInput">Description:</styles.Text>
 
         <styles.TextArea
+          id="descInput"
           type="text"
           placeholder="Description"
           value={description}
