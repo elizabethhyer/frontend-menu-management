@@ -1,9 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import MenuPage from "../../../pages/MenuPage";
+import MemoryRouter from "react-router-dom";
 
 test("Clicking the delete icon opens the confirmation dialog", () => {
-  render(<MenuPage />);
+  render(
+    <MemoryRouter>
+      <MenuPage />
+    </MemoryRouter>
+  );
 
   // Action
   const firstDeleteIcon = screen.getAllByTestId("DeleteIcon")[0];
@@ -17,8 +22,11 @@ test("Clicking the delete icon opens the confirmation dialog", () => {
 });
 
 test("Canceling out of confirmation dialog does not delete item", () => {
-  render(<MenuPage />);
-
+  render(
+    <MemoryRouter>
+      <MenuPage />
+    </MemoryRouter>
+  );
   // Action
   const firstDeleteIcon = screen.getAllByTestId("DeleteIcon")[0];
   userEvent.click(firstDeleteIcon);
@@ -29,8 +37,11 @@ test("Canceling out of confirmation dialog does not delete item", () => {
 });
 
 test("User can re-enter confirmation dialog after a cancellation", () => {
-  render(<MenuPage />);
-
+  render(
+    <MemoryRouter>
+      <MenuPage />
+    </MemoryRouter>
+  );
   // Action
   const firstDeleteIcon = screen.getAllByTestId("DeleteIcon")[0];
   userEvent.click(firstDeleteIcon);
@@ -50,8 +61,11 @@ test("User can re-enter confirmation dialog after a cancellation", () => {
 });
 
 test("Item is deleted if user confirms deletion", () => {
-  render(<MenuPage />);
-
+  render(
+    <MemoryRouter>
+      <MenuPage />
+    </MemoryRouter>
+  );
   // Action
   const firstDeleteIcon = screen.getAllByTestId("DeleteIcon")[0];
   userEvent.click(firstDeleteIcon);

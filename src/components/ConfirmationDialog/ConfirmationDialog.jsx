@@ -6,7 +6,6 @@ import * as styles from "./ConfirmationDialog.styles";
 
 const ConfirmationDialog = ({ onDelete, id }) => {
   const [showConfirmationDialog, setShowConfirmationDialog] = useState(true);
-  console.log(showConfirmationDialog);
 
   const toggleDialog = () => {
     setShowConfirmationDialog(!showConfirmationDialog);

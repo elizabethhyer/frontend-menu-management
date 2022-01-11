@@ -25,7 +25,7 @@ export const TextInput = styled.input`
   padding: 10px 10px 10px 5px;
   display: block;
   width: 90vw;
-  border: none;
+  border: 1px solid grey;
   border-radius: none;
   font-family: "Lato", sans-serif;
 
@@ -42,7 +42,7 @@ export const TextArea = styled.textarea`
   display: block;
   width: 90vw;
   height: 10rem;
-  border: none;
+  border: 1px solid grey;
   border-radius: none;
   font-family: "Lato", sans-serif;
 

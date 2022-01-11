@@ -19,13 +19,14 @@ const MenuItem = ({ item, onDelete }) => {
 
   return (
     <styles.MenuItemsContainer>
-      <styles.TrashCan onClick={toggleConfirmationDialog} />
       <styles.BackgroundImage
         className="image"
         imageUrl={imageUrl}
         onClick={toggleDescModal}
         data-testid={`${title}Image`}
-      />
+      >
+        <styles.TrashCan onClick={toggleConfirmationDialog} />
+      </styles.BackgroundImage>
       {showDescModal && <DescriptionModal desc={description} title={title} />}
       {showConfirmationDialog && (
         <ConfirmationDialog id={id} onDelete={onDelete} />

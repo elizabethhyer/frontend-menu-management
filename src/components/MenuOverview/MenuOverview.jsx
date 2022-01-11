@@ -5,16 +5,22 @@ import { Grid } from "@mui/material";
 import EditMenuItem from "../EditMenuOverview/EditMenuItem";
 import { useState } from "react";
 import Button from "../Button/Button";
+import { Link } from "react-router-dom";
 
-const MenuOverview = ({ items, onDelete, onEdit }) => {
-  const [editing, setEditing] = useState(false);
+const MenuOverview = ({ items, onDelete, onEdit, isEditing }) => {
+  const [editing, setEditing] = useState(isEditing);
 
   return (
     <div>
-      <Button
-        text={!editing ? "edit items" : "done editing"}
-        onClick={() => setEditing(!editing)}
-      />
+      <Link to={!editing ? "/edit" : "/"} style={{ textDecoration: "none" }}>
+        <Button
+          text={!editing ? "edit items" : "done editing"}
+          onClick={() => setEditing(!editing)}
+        />
+      </Link>
+      <Link to="/add" style={{ textDecoration: "none" }}>
+        <Button text="add item" />
+      </Link>
       {restuarantData.map((restaurant) => (
         <styles.MenuTitle key={restaurant.name}>
           {restaurant.name}
@@ -22,8 +28,9 @@ const MenuOverview = ({ items, onDelete, onEdit }) => {
       ))}
       <Grid
         container
-        justifyContent={!editing ? "space-around" : "center"}
+        justifyContent="center"
         alignItems="center"
+        flexDirection="row"
       >
         {items.map((item, index) =>
           !editing ? (

@@ -1,6 +1,5 @@
 import * as styles from "./EditMenuItem.styles";
 import { useState } from "react";
-import Button from "../Button/Button";
 
 const EditMenuItem = ({ item, onEdit }) => {
   const [imageUrl, setImageUrl] = useState(item.imageUrl);
@@ -13,8 +12,10 @@ const EditMenuItem = ({ item, onEdit }) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
+    setPrice(Number(price));
+
     // My thought process here is that the prices should probably be numerical, instead of word pricing
-    if (isNaN(price) || typeof price !== "number") {
+    if (isNaN(price)) {
       alert("Price must be entered as a numerical value");
       setPrice(0);
       return;
@@ -33,40 +34,35 @@ const EditMenuItem = ({ item, onEdit }) => {
     <>
       <styles.EditMenuItemsContainer>
         <styles.BackgroundImage className="image" imageUrl={imageUrl} />
-        <styles.EditMenuText>Image:</styles.EditMenuText>
         <styles.TextInput
           type="text"
           value={imageUrl}
           placeholder={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
+          onBlur={onSubmit}
         />
-        <styles.EditMenuText>Title:</styles.EditMenuText>
-
         <styles.TextInput
           type="text"
           value={title}
           placeholder={title}
           onChange={(e) => setTitle(e.target.value)}
+          onBlur={onSubmit}
         />
-        <styles.EditMenuText>Price:</styles.EditMenuText>
-
         <styles.TextInput
           type="text"
           value={price}
           placeholder={price}
-          onChange={(e) => setPrice(Number(e.target.value))}
+          onChange={(e) => setPrice(e.target.value)}
+          onBlur={onSubmit}
         />
-        <styles.EditMenuText>Description:</styles.EditMenuText>
-
         <styles.TextArea
           type="text"
           value={description}
           placeholder={description}
           onChange={(e) => setDescription(e.target.value)}
+          onBlur={onSubmit}
         />
       </styles.EditMenuItemsContainer>
-
-      <Button text="submit" onClick={onSubmit} />
     </>
   );
 };

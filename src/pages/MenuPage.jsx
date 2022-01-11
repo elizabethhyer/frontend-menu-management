@@ -2,6 +2,7 @@ import * as styles from "./MenuPage.styles";
 import MenuOverview from "../components/MenuOverview/MenuOverview";
 import AddItemForm from "../components/AddItemForm/AddItemForm";
 import { useState } from "react";
+import { Routes, BrowserRouter as Router, Route } from "react-router-dom";
 
 const MenuPage = () => {
   const [items, setItems] = useState([
@@ -102,16 +103,47 @@ const MenuPage = () => {
           : i
       )
     );
-    alert(
-      `${item.title} was updated. Please click 'Done Editing' to go back to the home screen.`
-    );
   };
 
   return (
-    <styles.MenuPageContainer>
-      <MenuOverview items={items} onDelete={handleDelete} onEdit={handleEdit} />
-      <AddItemForm onAdd={handleAdd} />
-    </styles.MenuPageContainer>
+    <Router>
+      <Routes>
+        <Route
+          path={"/"}
+          element={
+            <styles.MenuPageContainer>
+              <MenuOverview
+                items={items}
+                onDelete={handleDelete}
+                onEdit={handleEdit}
+                isEditing={false}
+              />
+            </styles.MenuPageContainer>
+          }
+        />
+        <Route
+          path={"/edit"}
+          element={
+            <styles.MenuPageContainer>
+              <MenuOverview
+                items={items}
+                onDelete={handleDelete}
+                onEdit={handleEdit}
+                isEditing={true}
+              />
+            </styles.MenuPageContainer>
+          }
+        />
+        <Route
+          path={"/add"}
+          element={
+            <styles.MenuPageContainer>
+              <AddItemForm onAdd={handleAdd} />
+            </styles.MenuPageContainer>
+          }
+        />
+      </Routes>
+    </Router>
   );
 };
 

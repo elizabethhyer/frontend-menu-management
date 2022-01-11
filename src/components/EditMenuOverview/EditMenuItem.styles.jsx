@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const EditMenuItemsContainer = styled.div`
-width 40vw;
+width 60vw;
 display: flex;
 flex-direction: column;
-height: 40rem;
+height: 30rem;
 align-items: center;
 position: relative;
 padding: 2rem;
@@ -18,7 +18,7 @@ cursor: pointer;
 
 export const BackgroundImage = styled.div`
   width: 100%;
-  height: 40%;
+  height: 90%;
   background-size: cover;
   background-position: center;
   margin-bottom: 5px;
@@ -28,25 +28,22 @@ export const BackgroundImage = styled.div`
   margin-bottom: 1rem;
 `;
 
-export const EditMenuText = styled.div`
-  width: 100%;
-  height: 5%;
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.5rem;
-  font-family: "Lato", sans-serif;
-  text-transform: uppercase;
-`;
-
 export const TextInput = styled.input`
   background: none;
-  background-color: #fff;
+  background-color: transparent;
+  font-family: "Lato", sans-serif;
   color: black;
   display: block;
   width: 100%;
   border: none;
   border-radius: none;
   margin: 0.2rem 0;
+  padding: 0.5rem;
+
+  &:hover {
+    background-color: #d3d3d3;
+    cursor: pointer;
+  }
 
   &:focus {
     outline: none;
@@ -55,7 +52,8 @@ export const TextInput = styled.input`
 
 export const TextArea = styled.textarea`
   background: none;
-  background-color: #fff;
+  background-color: transparent;
+  font-family: "Lato", sans-serif;
   color: black;
   display: block;
   width: 100%;
@@ -63,7 +61,12 @@ export const TextArea = styled.textarea`
   border: none;
   border-radius: none;
   margin: 0.2rem 0;
-  font-family: "Lato", sans-serif;
+  padding: 0.5rem;
+
+  &:hover {
+    background-color: #d3d3d3;
+    cursor: pointer;
+  }
 
   &:focus {
     outline: none;

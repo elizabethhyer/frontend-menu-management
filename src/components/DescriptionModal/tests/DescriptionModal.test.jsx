@@ -1,9 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import MenuPage from "../../../pages/MenuPage";
+import MemoryRouter from "react-router-dom";
 
 test("Description modal opens if a user clicks on an item photo", () => {
-  render(<MenuPage />);
+  render(
+    <MemoryRouter>
+      <MenuPage />
+    </MemoryRouter>
+  );
   const photo = screen.getByTestId("cheeseburgerImage");
 
   // Action
@@ -14,7 +19,11 @@ test("Description modal opens if a user clicks on an item photo", () => {
 });
 
 test("Description modal closes if user clicks on the modal exit icon", () => {
-  render(<MenuPage />);
+  render(
+    <MemoryRouter>
+      <MenuPage />
+    </MemoryRouter>
+  );
   const photo = screen.getByTestId("cheeseburgerImage");
 
   // Action
