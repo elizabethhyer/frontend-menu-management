@@ -1,8 +1,8 @@
+import { useState } from "react";
+
 import * as styles from "./MenuPage.styles";
 import MenuOverview from "../components/MenuOverview/MenuOverview";
 import AddItemForm from "../components/AddItemForm/AddItemForm";
-import { useState } from "react";
-import { Routes, BrowserRouter as Router, Route } from "react-router-dom";
 
 const MenuPage = () => {
   const [items, setItems] = useState([
@@ -31,7 +31,7 @@ const MenuPage = () => {
         "https://kitchenconfidante.com/wp-content/uploads/2019/10/Thai-Salmon-Burgers-kitchenconfidante.com-2332-750x1124.jpg",
       description:
         "Really, my neighbors are going at it. There's a part of me that says 'Maybe it's just their way of showing passion, I don't know them'. There's another part of me, however, that says it may be domestic violence and there's a possibility it should be reported. I'm very torn. Anyway...this sandwhich is okay. Honestly, salmon is pretty good. But salmon burgers? Usually end up tasting too fishy. This one is dressed simply, with just lettuce and tarter sauce. If you're gonna go fish burger, you may as well do it right.",
-      price: 16,
+      price: 17,
     },
     {
       id: 4,
@@ -106,44 +106,15 @@ const MenuPage = () => {
   };
 
   return (
-    <Router>
-      <Routes>
-        <Route
-          path={"/"}
-          element={
-            <styles.MenuPageContainer>
-              <MenuOverview
-                items={items}
-                onDelete={handleDelete}
-                onEdit={handleEdit}
-                isEditing={false}
-              />
-            </styles.MenuPageContainer>
-          }
-        />
-        <Route
-          path={"/edit"}
-          element={
-            <styles.MenuPageContainer>
-              <MenuOverview
-                items={items}
-                onDelete={handleDelete}
-                onEdit={handleEdit}
-                isEditing={true}
-              />
-            </styles.MenuPageContainer>
-          }
-        />
-        <Route
-          path={"/add"}
-          element={
-            <styles.MenuPageContainer>
-              <AddItemForm onAdd={handleAdd} />
-            </styles.MenuPageContainer>
-          }
-        />
-      </Routes>
-    </Router>
+    <styles.MenuPageContainer>
+      <MenuOverview
+        items={items}
+        onDelete={handleDelete}
+        onEdit={handleEdit}
+        onAdd={handleAdd}
+      />
+      <AddItemForm onAdd={handleAdd} />
+    </styles.MenuPageContainer>
   );
 };
 

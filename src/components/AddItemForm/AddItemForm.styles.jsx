@@ -25,7 +25,8 @@ export const TextInput = styled.input`
   padding: 10px 10px 10px 5px;
   display: block;
   width: 90vw;
-  border: 1px solid grey;
+  border: ${(prop) =>
+    prop.isInvalidInput ? "1px solid red" : "1px solid grey"};
   border-radius: none;
   font-family: "Lato", sans-serif;
 

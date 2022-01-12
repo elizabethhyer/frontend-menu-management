@@ -1,8 +1,9 @@
 import { useState } from "react";
-import Button from "../Button/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
+
 import * as styles from "./ConfirmationDialog.styles";
+import Button from "../Button/Button";
 
 const ConfirmationDialog = ({ onDelete, id }) => {
   const [showConfirmationDialog, setShowConfirmationDialog] = useState(true);

@@ -1,5 +1,6 @@
-import * as styles from "./EditMenuItem.styles";
 import { useState } from "react";
+
+import * as styles from "./EditMenuItem.styles";
 
 const EditMenuItem = ({ item, onEdit }) => {
   const [imageUrl, setImageUrl] = useState(item.imageUrl);
@@ -31,39 +32,42 @@ const EditMenuItem = ({ item, onEdit }) => {
   };
 
   return (
-    <>
-      <styles.EditMenuItemsContainer>
-        <styles.BackgroundImage className="image" imageUrl={imageUrl} />
-        <styles.TextInput
-          type="text"
-          value={imageUrl}
-          placeholder={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
-          onBlur={onSubmit}
-        />
-        <styles.TextInput
+    <styles.MenuItemsContainer>
+      <styles.BackgroundImage className="image" imageUrl={imageUrl} />
+      <styles.MenuText>
+        <styles.MenuTextInput
           type="text"
           value={title}
           placeholder={title}
           onChange={(e) => setTitle(e.target.value)}
           onBlur={onSubmit}
+          title={`${title}TitleInput`}
         />
-        <styles.TextInput
+        <styles.MenuTextInput
           type="text"
           value={price}
           placeholder={price}
           onChange={(e) => setPrice(e.target.value)}
           onBlur={onSubmit}
+          isNum={true}
+          title={`${title}PriceInput`}
         />
-        <styles.TextArea
-          type="text"
-          value={description}
-          placeholder={description}
-          onChange={(e) => setDescription(e.target.value)}
-          onBlur={onSubmit}
-        />
-      </styles.EditMenuItemsContainer>
-    </>
+      </styles.MenuText>
+      <styles.DescriptionTextarea
+        type="text"
+        value={description}
+        placeholder={description}
+        onChange={(e) => setDescription(e.target.value)}
+        onBlur={onSubmit}
+      />
+      <styles.MenuImageTextInput
+        type="text"
+        value={imageUrl}
+        placeholder={imageUrl}
+        onChange={(e) => setImageUrl(e.target.value)}
+        onBlur={onSubmit}
+      />
+    </styles.MenuItemsContainer>
   );
 };
 

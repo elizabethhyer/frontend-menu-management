@@ -1,5 +1,6 @@
-import * as styles from "./MenuItem.styles";
 import { useState } from "react";
+
+import * as styles from "./MenuItem.styles";
 import DescriptionModal from "../DescriptionModal/DescriptionModal";
 import ConfirmationDialog from "../ConfirmationDialog/ConfirmationDialog";
 
@@ -7,7 +8,7 @@ const MenuItem = ({ item, onDelete }) => {
   const [showDescModal, setShowDescModal] = useState(false);
   const [showConfirmationDialog, setShowConfirmationDialog] = useState(false);
 
-  const { title, imageUrl, description, price, id } = item;
+  const { imageUrl, title, price, description, id } = item;
 
   const toggleDescModal = () => {
     setShowDescModal(!showDescModal);
@@ -31,6 +32,7 @@ const MenuItem = ({ item, onDelete }) => {
       {showConfirmationDialog && (
         <ConfirmationDialog id={id} onDelete={onDelete} />
       )}
+
       <styles.MenuText>
         <div>{title}</div>
         <div>{parseFloat(price).toFixed(2)}</div>

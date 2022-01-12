@@ -36,19 +36,6 @@ export const DescriptionModalContainer = styled.div`
   }
 `;
 
-export const DescriptionModalClose = styled(CloseIcon)`
-  position: absolute;
-  right: 0px;
-  margin-right: 10px;
-  margin-top: 10px;
-  cursor: pointer;
-
-  @media screen and (max-width: 300px) {
-    left: 0px;
-    margin-left: 10px;
-  }
-`;
-
 export const TitleText = styled.div`
   font-family: "Francois One", sans-serif;
   font-size: 1.7rem;
@@ -60,4 +47,17 @@ export const TitleText = styled.div`
 
 export const DescriptionModalText = styled.div`
   padding: 1.5rem;
+`;
+
+export const DescriptionModalClose = styled(CloseIcon)`
+  position: absolute;
+  right: 0px;
+  margin-right: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+
+  @media screen and (max-width: 300px) {
+    left: 0px;
+    margin-left: 10px;
+  }
 `;

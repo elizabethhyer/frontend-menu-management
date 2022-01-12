@@ -1,9 +1,10 @@
-import * as styles from "./AddItemForm.styles";
 import { useState } from "react";
+
+import * as styles from "./AddItemForm.styles";
 import Button from "../Button/Button";
-import { Link } from "react-router-dom";
 
 const AddItemForm = ({ onAdd }) => {
+  const [isInvalidInput, setIsInvalidInput] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState(0);
@@ -24,6 +25,7 @@ const AddItemForm = ({ onAdd }) => {
     // And my thought process here is that a user should be able to get away with not submitting a photo or description
     if (!title || !price) {
       alert("Your item is missing a required field");
+      setIsInvalidInput(true);
       return;
     }
 
@@ -37,9 +39,6 @@ const AddItemForm = ({ onAdd }) => {
 
   return (
     <div>
-      <Link to="/" style={{ textDecoration: "none" }}>
-        <Button text={"home"} />
-      </Link>
       <styles.AddItemFormContainer>
         <styles.TitleText>Add a new item</styles.TitleText>
         <form onSubmit={onSubmit}>
@@ -59,6 +58,7 @@ const AddItemForm = ({ onAdd }) => {
             placeholder="Item name"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            isInvalidInput={isInvalidInput}
           />
           <styles.Text htmlFor="priceInput">* Price:</styles.Text>
 
@@ -68,6 +68,7 @@ const AddItemForm = ({ onAdd }) => {
             placeholder="Price"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
+            isInvalidInput={isInvalidInput}
           />
           <styles.Text htmlFor="descInput">Description:</styles.Text>
 

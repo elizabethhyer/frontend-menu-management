@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Modal } from "@mui/material";
+
 import * as styles from "./DescriptionModal.styles";
 
 const DescriptionModal = ({ desc, title }) => {

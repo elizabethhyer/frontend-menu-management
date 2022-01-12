@@ -1,31 +1,23 @@
-import MenuItem from "../MenuItem/MenuItem";
-import * as styles from "./MenuOverview.styles";
-import { restuarantData } from "../../data/menu.data";
-import { Grid } from "@mui/material";
-import EditMenuItem from "../EditMenuOverview/EditMenuItem";
 import { useState } from "react";
-import Button from "../Button/Button";
-import { Link } from "react-router-dom";
+import { Grid } from "@mui/material";
 
-const MenuOverview = ({ items, onDelete, onEdit, isEditing }) => {
-  const [editing, setEditing] = useState(isEditing);
+import * as styles from "./MenuOverview.styles";
+import Button from "../Button/Button";
+import MenuItem from "../MenuItem/MenuItem";
+import EditMenuItem from "../EditMenuOverview/EditMenuItem";
+
+const MenuOverview = ({ items, onDelete, onEdit }) => {
+  const [isEditing, setIsEditing] = useState(false);
 
   return (
     <div>
-      <Link to={!editing ? "/edit" : "/"} style={{ textDecoration: "none" }}>
-        <Button
-          text={!editing ? "edit items" : "done editing"}
-          onClick={() => setEditing(!editing)}
-        />
-      </Link>
-      <Link to="/add" style={{ textDecoration: "none" }}>
-        <Button text="add item" />
-      </Link>
-      {restuarantData.map((restaurant) => (
-        <styles.MenuTitle key={restaurant.name}>
-          {restaurant.name}
-        </styles.MenuTitle>
-      ))}
+      <Button
+        text={!isEditing ? "edit items" : "done editing"}
+        onClick={() => setIsEditing(!isEditing)}
+      />
+
+      <styles.MenuTitle>Sandwich King</styles.MenuTitle>
+
       <Grid
         container
         justifyContent="center"
@@ -33,7 +25,7 @@ const MenuOverview = ({ items, onDelete, onEdit, isEditing }) => {
         flexDirection="row"
       >
         {items.map((item, index) =>
-          !editing ? (
+          !isEditing ? (
             <MenuItem key={index} item={item} onDelete={onDelete} />
           ) : (
             <EditMenuItem key={index} item={item} onEdit={onEdit} />
