@@ -31,10 +31,10 @@ const AddItemForm = ({ onAdd }) => {
 
     onAdd({ imageUrl, title, price, description });
 
-    setImageUrl("Image URL");
-    setTitle("Item name");
-    setPrice(0);
-    setDescription("Description");
+    setImageUrl("");
+    setTitle("");
+    setPrice("");
+    setDescription("");
   };
 
   return (
